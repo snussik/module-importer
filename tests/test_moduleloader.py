@@ -1,6 +1,6 @@
 import pytest
 
-from src.module_importer import ModuleLoader
+from module_importer import ModuleLoader
 
 from .modules.module import Module
 

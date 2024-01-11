@@ -1,10 +1,11 @@
+from pathlib import Path
+
 import pytest
 
 from module_importer import ModuleLoader
+from tests.modules.module import Module
 
-from .modules.module import Module
-
-valid_path = "/Users/sedov/GIT/module-importer/tests/modules"
+valid_path = "tests/modules"
 
 
 @pytest.fixture
@@ -35,10 +36,11 @@ def test_load_modules_invalid_mode(loader):
 
 def test_get_path_valid(loader):
     path = loader.path
-    assert path == valid_path
+    resolved_valid_path = Path(valid_path).resolve()
+    assert path == str(resolved_valid_path)
 
 
 def test_load_module(loader):
     module = loader.load_modules()[0]
-    m: Module = module()
-    assert m.au == "I'm module"
+    m: Module = module()  # type: ignore
+    assert m.au == "I'm module"  # type: ignore

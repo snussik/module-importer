@@ -24,11 +24,11 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    # - name: Install dependencies
+    #   run: |
+    #     python -m pip install --upgrade pip
+    #     python -m pip install flake8 pytest
+    #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Install Poetry
       uses: abatilo/actions-poetry@v2
     - name: Setup a local virtual environment (if no poetry.toml file)
@@ -36,7 +36,7 @@ jobs:
         ls -la
         poetry config virtualenvs.create true --local
         poetry config virtualenvs.in-project true --local
-        poetry add pytest
+        poetry add flake8 pytest
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names

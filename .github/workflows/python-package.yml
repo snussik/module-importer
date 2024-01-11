@@ -36,6 +36,7 @@ jobs:
         ls -la
         poetry config virtualenvs.create true --local
         poetry config virtualenvs.in-project true --local
+        poetry add pytest
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names

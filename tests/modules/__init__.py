@@ -1,1 +1,1 @@
-from .module import Module
+from tests.modules import Module

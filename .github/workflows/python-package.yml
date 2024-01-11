@@ -33,6 +33,7 @@ jobs:
       uses: abatilo/actions-poetry@v2
     - name: Setup a local virtual environment (if no poetry.toml file)
       run: |
+        ls -la
         poetry config virtualenvs.create true --local
         poetry config virtualenvs.in-project true --local
     - name: Lint with flake8
@@ -43,4 +44,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        poetry run pytest 
+        poetry run python -m pytest  
